@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title> print current day and time </title>
+<script type="text/javascript">
+
+function getCurrentTimeString() {
+    var myDate = new Date();
+    var timeString = myDate.toLocaleString();
+    
+    return timeString
+}
+
+function updateTimeString(phold){
+    var tstr = getCurrentTimeString();
+    phold.innerHTML = tstr;
+    setTimeout(function() {
+        updateTimeString(phold);
+    }, 500);
+}
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    var phold = document.querySelector('#phold_time');
+    updateTimeString(phold);
+});
+
+</script>
+<style>
+body {
+    background: black;
+    overflow-y: hidden;
+}
+p {
+    font-family: 'san-serif';
+    color: white;
+    font-size: 24pt;
+}
+</style>
+</head>
+
+<body>
+<div><p id="phold_time"></p></div>
+</body>
+
+</html>
